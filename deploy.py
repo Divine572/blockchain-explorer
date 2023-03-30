@@ -20,7 +20,7 @@ deployer = os.environ.get("CELO_DEPLOYER_ADDRESS")
 private_key = os.environ.get("CELO_DEPLOYER_PRIVATE_KEY")
 
 
-with open("SimpleStorage.sol", "r") as file:
+with open("BlockchainExplorer.sol", "r") as file:
     contract_source_code = file.read()
 
 
@@ -28,7 +28,7 @@ with open("SimpleStorage.sol", "r") as file:
 compiled_sol = compile_standard({
     "language": "Solidity",
     "sources": {
-        "SimpleStorage.sol": {
+        "BlockchainExplorer.sol": {
             "content": contract_source_code
         }
     },
@@ -42,7 +42,7 @@ compiled_sol = compile_standard({
 })
 
 # Extract the contract data
-contract_data = compiled_sol['contracts']['SimpleStorage.sol']['SimpleStorage']
+contract_data = compiled_sol['contracts']['BlockchainExplorer.sol']['BlockchainExplorer']
 bytecode = contract_data['evm']['bytecode']['object']
 abi = json.loads(contract_data['metadata'])['output']['abi']
 
